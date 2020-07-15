@@ -1,0 +1,166 @@
+一.调试终端 ctrl+` -》终止-》ctrl+`-》选择shell-》终止-》ctrl+`
+二.git命令：
+    1.查看提交信息
+        git log 
+
+        补充： 
+        1) git add xxx xxx xxx 一次性暂存多个文件
+        2) git add -A 一次性暂存工作区所有有修改的文件         
+        3) git commit -a  跳过暂存，直接提交(untraked除外)      (git commit -m "" 从暂存区提交到master分支)
+        4) git add 目录名  暂存指定目录下所有有修改的文件
+           git log --pretty=oneline  显示有用的信息，一行显示
+
+    2.取消修改
+        1)取消工作区的修改
+            文件被修改后还没有执行git add命令
+            git checkout -- 文件名
+            取消到上一次提交之前
+
+        2)取消暂存区的修改
+            文件被修改后执行了git add命令，但是还没有执行git commit命令
+            1.先撤销git add命令  git reset HEAD 文件名
+            2.再撤销工作区的修改  git checkout -- 文件名
+
+        3)取消分支上的修改
+            文件被修改后执行了git add和git commit命令(已经提交了)--》unmodified状态
+            无法取消修改
+            使用版本回退：
+                1.首先使用git log查看每次提交的id，然后确定需要回退到哪个版本
+                2.再使用git reset --hard id
+
+    3.关于HEAD
+        就是一个存盘点,实现版本的控制
+        git在将每一次的提交串成一条时间线，这条时间线就称为分支。
+        默认只有一条分支，master，也称之为主分支，而HEAD指向的就是当前分支
+
+        1.创建分支
+            git branch v1  -->将当前所在分支复制一条出来，起名为v1
+
+        2.查看当前仓库有哪些分支
+            git branch 
+            前面有*的表示当前所在分支
+
+        3.切换分支
+            git checkout 分支名
+            在一条分支上的修改不会影响到其他分支上的内容
+        
+        4.分支的合并
+            git merge 分支名称
+            将指定名称上分支的修改合并到当前分支上
+            在master上使用git merge v2
+            将v2的修改合并到master上,v2的内容不会变化，master的内容发生变化
+
+            步骤：
+            1.提交master
+            2.创建v2.1分支并切换到v2.1上
+            3.修改v2.1中2.txt的内容，并暂存提交
+            4.查看提交信息，观察master和v2.1的位置
+            5.切换到master，将v2.1的修改合并，再查看提交信息
+            6.查看2.txt的内容有没有变化 
+
+        5.分支的删除
+            删除指定分支
+            git branch -d 分支名
+           
+            如果分支没有合并，则删除失败，可以强制删除
+            git branch -D 分支名
+
+            不能删除当前所在分支
+
+            删除master
+
+            cd /d
+            rm -rf test删除仓库
+            mkdir test 创建
+            cd test
+            git init创建仓库
+            touch 1.txt 创建文件
+            echo initial > 1.txt
+            git add -A ->git commit -m "initial" 提交
+            git log
+            git branch v1 -> git branch v2
+            git log
+            git checkout v1
+            ls
+            cat 1.txt
+            echo v1修改了1.txt > 1.txt
+            git commit -a -m "v1的修改"
+            git log
+            git checkout master
+            git merge v1
+            git log
+            git checkout v2
+            cat 1.txt
+            echo v2修改>>1.txt
+            git commit -a -m "v2的修改"
+            git log
+            git status
+            git checkout master
+            git log
+            git merge v2
+            cat 1.txt
+            vi 1.txt回车
+            cat 1.txt
+            git add -A
+            git commit -m "修复合并冲突"
+            git log --pretty=oneline
+
+三.github的使用
+    https://github.com
+    1.注册登录 邮箱验证
+    2.创建远程仓库 右上角+ 选择new respository
+        在respoditory name中填写远程仓库的名称，其他都不管
+    3.选择https模式
+        在命令中运行：
+            git remote add origin 远程仓库地址
+            这句命令的作用：添加远程关联
+            git remote 是固定语法
+            add  添加
+            origin  别名  指代后面远程仓库的地址
+        再运行：
+            git push -u origin master
+            作用：将本地仓库的内容推送到远程仓库
+            git push
+            -u  第一次推送时添加，之后就不需要了 如果没有master分支就创建
+            origin  别名， 指代添加远程关联时的地址
+            master 推送的分支
+
+            //git remote add origin https://github.com/FuKunPing/
+            //git push origin master
+
+
+
+
+
+4.HTTPS和SSH
+    HTTPS每次推送都需要输入用户名和密码
+
+    SSH需要配置秘钥，配置成功后推送就不需要用户名和密码了
+
+    输入命令
+        ls -a ~/.ssh 查看本机有没有秘钥
+    创建秘钥
+        ssh-keygen -t rsa -C "邮箱地址"
+    配置秘钥：
+        打开id_rsa.pub复制内容
+        点击github头像--》settings-->SSH And GPGKeys-->Add SSH-->Title随便写 ，将复制的内容粘贴进Key
+        -->Add SSH key
+        注：本地的.ssh不能删除
+
+
+
+
+
+
+
+
+           
+
+
+
+
+
+
+
+    
+            

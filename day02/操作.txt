@@ -1,0 +1,36 @@
+﻿删除master
+    cd /d
+    rm -rf test删除仓库
+    mkdir test 创建
+    cd test
+    git init创建仓库
+    touch 1.txt 创建文件
+    echo initial > 1.txt
+    git add -A ->git commit -m "initial" 提交
+    git log
+    git branch v1 -> git branch v2
+    git log
+    git checkout v1
+    ls
+    cat 1.txt
+    echo v1修改了1.txt > 1.txt
+    git commit -a -m "v1的修改"
+    git log
+    git checkout master
+    git merge v1
+    git log
+    git checkout v2
+    cat 1.txt
+    echo v2修改>>1.txt
+    git commit -a -m "v2的修改"
+    git log
+    git status
+    git checkout master
+    git log
+    git merge v2
+    cat 1.txt
+    vi 1.txt回车
+    cat 1.txt
+    git add -A
+    git commit -m "修复合并冲突"
+    git log --pretty=oneline
