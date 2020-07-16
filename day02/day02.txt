@@ -147,6 +147,22 @@
         -->Add SSH key
         注：本地的.ssh不能删除
 
+视图界面工具的使用 GUI
+
+
+补充：从github上下载代码
+        1.clone --> download Zip
+
+        2.git clone命令
+        git clone 远程仓库地址
+        该命令会将指定远程仓库完整的克隆下来,包括历史提交信息,而且还会自动添加远程关联
+
+        3.git pull origin master
+        将远程仓库的master分支上的修改拉取下来
+
+        一般情况下，第一次下载时使用git clone
+        以后同步代码就只使用git pull(拉取)和git push(推送)
+
 
 
 

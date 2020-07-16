@@ -106,7 +106,7 @@ git命令
             git commit -m "提交的信息"
 
         一步提交：
-            git commit -a
+            git commit -a -m "" 工作区直接提交
 
 1.新建一个文件
 2.使用git add命令提交暂存区
