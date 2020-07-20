@@ -1,0 +1,22 @@
+功能描述：
+  1. 访问localhost:4000，显示表单页面
+    页面中包含内容：
+      action="/tijiao"
+      用户名 input type="text"
+      留言 textarea
+      submit
+  2. 点击submit，发送/tijiao请求
+    服务器接收请求参数：
+      username，message
+    并将数据保存
+      username.txt
+      文件中的内容为message
+  
+  3. 访问localhost:4000/show请求
+    页面显示数据
+      xxx的内容：
+      xxxxxxxxxx
+
+
+
+

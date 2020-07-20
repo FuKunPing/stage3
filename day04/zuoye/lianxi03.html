@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn1">小明</button>
+  <button id="btn2">小红</button>
+  <div id="info"></div>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+    btn1.onclick = function(){
+      $.ajax({
+        url: "/xiaoming",
+        success: function(res){
+          $("#info").html(res)
+        }
+      })
+    }
+    btn2.onclick = function(){
+      $.ajax({
+        url: "/xiaohong",
+        success: function(res){
+          $("#info").html(res)
+        }
+      })
+    }
+
+  </script>
+</body>
+</html>
