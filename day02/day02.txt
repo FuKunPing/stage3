@@ -67,7 +67,7 @@
 
             不能删除当前所在分支
 
-            删除master
+            删除master   
 
             cd /d
             rm -rf test删除仓库
