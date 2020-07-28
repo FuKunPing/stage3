@@ -21,33 +21,87 @@ MongoClient.connect(url,function(err,client){
   var col = db.collection("emp");
 
   //增加数据
-  /* var obj={
-    "name":"王磊",
-    "age":30,
-    "likes":["爬山","烧烤"],
-    "score":{"html":"78","css":"69","js":"80"}
+  var obj1={
+    a:1,b:2
     };
-  col.insertOne(obj,function(err,result){
+    var obj2={
+      a:10,b:20
+    };
+    var obj3={
+      a:100,b:200
+    };
+
+  // 向集合中添加一条数据
+ /*  col.insertOne(obj1,function(err,result){
       if(err){
           console.log(err);
-          return ;
+      }else{
+         console.log(result);  
       }
-      console.log(result);
+      client.close();
   }); */
 
-    //删除姓名为赵六的数据   
-    col.deleteOne({});
+    //向集合中添加多条数据
+    /* col.insertMany([obj2,obj3],function(err,result){
+      if(err){
+        console.log(err);
+      }else{
+       console.log(result);  
+      }
+    client.close();
+	}); */
+	
+	// 删除一条数据
+	/* col.deleteOne({a:100},function(err,result){
+		if(err){
+			console.log(err);
+		  }else{
+		   console.log(result);  
+		  }
+		client.close();
+	}); */
+
+	// 删除多条数据
+	col.deleteMany({a:100},function(err,result){
+		if(err){
+			console.log(err);
+		  }else{
+		   console.log(result);  
+		  }
+		client.close();
+	});
 
 
+    // 修改一条数据
+    /* col.updateOne({a:10},{$set:{a:100,b:200}},function(err,result){
+      if(err){
+        console.log(err);
+      }else{
+       console.log(result);  
+      }
+    client.close();
+	}); */
+	
+	// 修改多条数据
+    /* col.updateMany({a:10},{$set:{a:100,b:200}},function(err,result){
+      if(err){
+        console.log(err);
+      }else{
+       console.log(result);  
+      }
+    client.close();
+    }); */
 
-  //查询集合中的所有数据
+
+  //查询集合中的所有数据,只有查询要转换成数组
   /* col.find().toArray(function(err,docs){
       if(err){
           console.log(err);
+          client.close();
           return ;
       }
       console.log(docs);
   }); */
   //关闭连接
-  client.close();
+  // client.close();
 })

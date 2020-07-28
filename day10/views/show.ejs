@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table,tr,td{
+      border: 1px solid rgb(196, 216, 228);
+    }
+    td{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>商品展示</h1>
+  <table cellspacing='0' style="width:55%">
+    <tr>
+      <td>商品编号</td>
+      <td>商品名称</td>
+      <td>单价</td>
+      <td>库存</td>
+      <td>操作</td>
+    </tr>
+    <% for(var i=0;i<products.length;i++){ %>
+      <tr>
+        <td><%= products[i].pid %></td>
+        <td><%= products[i].pname %></td>
+        <td><%= products[i].price %></td>
+        <td><%= products[i].count %></td>
+        <td>
+          <a href="/update?id=<%= products[i]._id %>">更新</a> &nbsp;&nbsp;
+          <a href="/delete/<%= products[i]._id %>">下架</a>
+        </td>
+      </tr>
+    <% } %>
+  </table>
+  <a href="/add">进货</a>
+</body>
+</html>
