@@ -60,7 +60,7 @@ db.once('open',function(){
 
 
 // 1.增加数据
-/* var u1={
+/* var u={
     uname:'张三1',
     age:23,
     isMarried:false,
@@ -95,7 +95,7 @@ o.save(function(err,doc){
     console.log(doc);
 }); */
 // 插入多条
-/* User.insertMany([u1,u2,u3,u4],function(err,res){
+/* User.insertMany([u,u2,u3,u4],function(err,res){
     console.log(err);
     console.log(res);
 }); */
