@@ -1,5 +1,5 @@
 var router=require("express").Router({
-    mergeParams:true//{ name1: 'aaa', name2: 'bbb' } 加了这个可以拿到父级的参数(参数名字一样的话就会覆盖)
+    mergeParams:true//{ name1: 'aaa', name2: 'bbb' } 加了这个可以拿到父级的参数(参数名字一样的话后面就会覆盖前面的参数)
 });
 
 //  : 传参 abc是参数名

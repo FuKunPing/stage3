@@ -7,7 +7,7 @@ mergeParams:true  加了这个可以拿到父级的参数(参数名字一样的�
 */
 
 var express=require("express");
-var router=require("./01_router_2.js");
+var router=require("./01_router_1.js");
 
 var app=express();
 app.listen(4000);
